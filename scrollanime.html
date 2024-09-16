@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Anime</title>
+    <style>
+        html {
+            scroll-snap-type: y mandatory;
+
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            scroll-behavior: smooth;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .main {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: calc(100%);
+            background-color: antiquewhite;
+            scroll-snap-align: start;
+
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section .animate {
+            transition: all 1s;
+            overflow: hidden !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .animate p {
+            padding: 20px 30px;
+        }
+
+        .one {
+            background-color: rgb(250, 245, 176);
+            height: 250px;
+            width: 500px;
+        }
+
+        .two {
+            background-color: springgreen;
+            height: 250px;
+            width: 500px;
+        }
+
+        .three {
+            background-color: brown;
+            height: 250px;
+            width: 500px;
+        }
+
+        .four {
+            background-color: burlywood;
+            height: 250px;
+            width: 500px;
+        }
+
+
+        .sec-1 .animate {
+            opacity: 0;
+            transform: translate3d(-100px, 0px, 0px);
+
+        }
+
+        .sec-1.show-animate .animate {
+            opacity: 1;
+            transform: translate3d(0, 0px, 0px);
+        }
+
+        .sec-2 .animate {
+            opacity: 0;
+            transform: translate3d(100px, 0px, 0px);
+
+        }
+
+        .sec-2.show-animate .animate {
+            opacity: 1;
+            transform: translate3d(0, 0px, 0px);
+        }
+
+        .sec-3 .animate {
+            opacity: 0;
+            transform: translateY(-100px);
+
+        }
+
+        .sec-3.show-animate .animate {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        .sec-4 .animate {
+            opacity: 0;
+            transform: translateY(100px);
+
+        }
+
+        .sec-4.show-animate .animate {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        .container {
+            margin-top: 50px;
+            position: relative;
+            padding-top: 20px;
+            padding-bottom: 70px;
+            scroll-snap-align: start;
+        }
+
+        .boll {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(116, 209, 221);
+            position: absolute;
+            left: 52%;
+            top: 40%;
+            bottom: 0;
+            z-index: 2;
+            transform: translateX(-50%);
+        }
+
+        .sec-5 .animate {
+            transform: scale(0) translateX(-50%);
+
+        }
+
+        .sec-5.show-animate .animate {
+            transform: scale(2) translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="main">
+            <p>Scroll down</p>
+            <p><a href="#main" style="color: black;text-decoration: none;">&#8595;</a></p>
+        </div>
+        <div class="container" id="main">
+            <section class="sec-5">
+                <div class="animate boll"></div>
+            </section>
+            <div class="flex">
+                <section class="sec-3">
+                    <div class="animate one">
+                        <h1>Heading</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit diam faucibus potenti cubilia nullam
+                            hac, nascetur dapibus nunc euismod enim.</p>
+                    </div>
+                </section>
+                <section class="sec-2">
+                    <div class="animate two">
+                        <img src="https://images.pexels.com/photos/1490908/pexels-photo-1490908.jpeg?cs=srgb&dl=pexels-svetozar-milashevich-1490908.jpg&fm=jpg"
+                            width="100%" alt="">
+                    </div>
+                </section>
+            </div>
+            <div class="flex">
+
+                <section class="sec-1">
+                    <div class="animate three">
+                        <img src="https://wallpapers.com/images/featured/cat-pictures-zc3gu0636kmldm04.jpg" width="100%"
+                            alt="">
+                    </div>
+                </section>
+                <section class="sec-4">
+                    <div class="animate four">
+                        <h1>Heading</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit diam faucibus potenti cubilia nullam
+                            hac, nascetur dapibus nunc euismod enim.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        // const observer = new IntersectionObserver((en) => {
+        //     en.forEach((entry) => {
+        //         console.log(entry);
+        //         if(entry.isIntersecting) {
+        //             entry.target.classList.add("show-animate");
+        //         } else {
+        //             entry.target.classList.remove("show-animate");
+        //         }
+        //     })
+        // })
+
+        // const hidElements = document.querySelectorAll('section');
+        // hidElements.forEach((el) => observer.observe(el));
+
+        function scrollHandler() {
+            const triggerBtn = window.innerHeight / 5 * 4;
+            const hidElements = document.querySelectorAll('section');
+
+            hidElements.forEach((box) => {
+                const boxTop = box.getBoundingClientRect().top;
+                console.log("elemheight", boxTop);
+
+                if (boxTop < triggerBtn) {
+                    box.classList.add('show-animate');
+                } else {
+                    box.classList.remove('show-animate');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', scrollHandler);
+
+        scrollHandler();
+
+
+    </script>
+
+</body>
+
+</html>

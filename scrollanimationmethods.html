@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Scroll Animation</title>
+</head>
+<style>
+    body {
+        font-size: 16px;
+        font-family: monospace;
+        font-weight: 400;
+        background: #efefef;
+        line-height: 170%;
+        padding: 20px;
+        overflow-x: hidden;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    
+    .animation-element {
+        margin: 0% 1.5% 3% 1.5%;
+        background: #F5F5F5;
+        padding: 15px;
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+        border: solid 1px #EAEAEA;
+        opacity: 0;
+    }
+
+
+    .animation-element .content {
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .animation-element i {
+        color: #a6dcec;
+        margin-right: 5px;
+    }
+
+
+    /* Method 1 */
+    .animation-element.slide-left {
+        opacity: 0;
+        transition: all 500ms linear;
+        transform: translate3d(-100px, 0px, 0px);
+    }
+
+    .animation-element.slide-left.in-view {
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    .animation-element.slide-right {
+        opacity: 0;
+        transition: all 500ms linear;
+        transform: translate3d(100px, 0px, 0px);
+    }
+
+    .animation-element.slide-right.in-view {
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    /* Method 2 */
+    section .animate {
+        transition: all 1s;
+        overflow: hidden !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .sec-1 .animate {
+        transform: translate3d(-100px, 0px, 0px);
+
+    }
+
+    .sec-1.show-animate .animate {
+        transform: translate3d(0, 0px, 0px);
+    }
+
+    .sec-2 .animate {
+        transform: translate3d(100px, 0px, 0px);
+
+    }
+
+    .sec-2.show-animate .animate {
+        transform: translate3d(0, 0px, 0px);
+    }
+    
+
+    .fade-anime {
+        animation: fade linear both;
+        animation-timeline: view();
+        animation-range: entry 50% cover 50%;
+    }
+
+    .left-anime {
+        animation: left linear both;
+        animation-timeline: view();
+        animation-range: entry 50% cover 50%;
+        transition: all 2s ease;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    @keyframes left {
+        from {
+            transform: translateY(100px);
+
+        }
+        to{
+            transform: translateY(0px);
+
+        }
+    }
+
+   
+
+</style>
+
+<body>
+    <div class="container cf" style="margin-top: 700px;">
+        <!-- Method 1 -->
+        <div class="animation-element slide-left testimonial">
+            
+            <div class="content"><i class="fa fa-quote-left"></i> When I started using their service I was skeptical.
+                They promised me a 300% return on my initial investment. However they came through on their word and now
+                my business is flourishing.. <i class="fa fa-quote-right"></i></div>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+
+        </div>
+
+        <div class="animation-element slide-right testimonial">
+            
+            <div class="content"><i class="fa fa-quote-left"></i> When I started using their service I was skeptical.
+                They promised me a 300% return on my initial investment. However they came through on their word and now
+                my business is flourishing.. <i class="fa fa-quote-right"></i></div>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Method 2 -->
+    <section class="sec-1">
+        <h1 class="animate">This is heading</h1>
+        <p class="animate">This is para something you know</p>
+    </section>
+
+    <section class="sec-2">
+        <h1 class="animate">This is heading</h1>
+        <p class="animate">This is para something you know</p>
+    </section>
+
+
+    <!-- Method 3 -->
+    <p class="fade-anime">This css scroll animation using view()</p>
+    <p class="left-anime">This css scroll up animation using view()</p>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+<!--     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- <script>
+        var $animation_elements = $('.animation-element');
+        var $window = $(window);
+
+        function check_if_in_view() {
+            var window_height = $window.height();
+            var window_top_position = $window.scrollTop();
+            var window_bottom_position = (window_top_position + window_height);
+
+            $.each($animation_elements, function () {
+                var $element = $(this);
+                var element_height = $element.outerHeight();
+                var element_top_position = $element.offset().top;
+                var element_bottom_position = (element_top_position + element_height);
+
+                //check to see if this current container is within viewport
+                if ((element_bottom_position >= window_top_position) &&
+                    (element_top_position <= window_bottom_position)) {
+                    $element.addClass('in-view');
+                } else {
+                    $element.removeClass('in-view');
+                }
+            });
+        }
+
+        $window.on('scroll resize', check_if_in_view);
+        $window.trigger('scroll');
+    </script> -->
+
+<script>
+    var animation_elements = document.querySelectorAll('.animation-element');
+    var window_element = window;
+
+    
+    window_element.addEventListener('scroll', check_if_in_view);
+    window_element.addEventListener('resize', check_if_in_view);
+    window_element.dispatchEvent(new Event('scroll'));
+
+    function check_if_in_view() {
+        var window_height = window_element.innerHeight;
+        var window_top_position = window_element.pageYOffset;
+        var window_bottom_position = window_top_position + window_height;
+
+        animation_elements.forEach(function (element) {
+            var element_rect = element.getBoundingClientRect();
+            var element_top_position = element_rect.top + window_top_position;
+            var element_bottom_position = element_top_position + element_rect.height;
+
+            // Check if this current container is within the viewport
+            if (
+                element_bottom_position >= window_top_position &&
+                element_top_position <= window_bottom_position
+            ) {
+                element.classList.add('in-view');
+            } else {
+                element.classList.remove('in-view');
+            }
+        });
+    }
+
+</script>
+
+<!-- <script>
+    let sections = document.querySelectorAll("section");
+
+    window.onscroll = () => {
+        sections.forEach(sec => {
+            let top = window.scrollY;
+            let offset = sec.offsetTop - 150;
+            let height = sec.offsetHeight;
+            
+            if (top >= offset && top < offset + height) {
+                sec.classList.add("show-animate");
+            } else {
+                sec.classList.remove("show-animate");
+            }
+        })
+    }
+</script> -->
+
+
+<!-- <script>
+    let boxes = document.querySelectorAll("section");
+    window.addEventListener('scroll', checkboxes)
+
+    // checkboxes()
+    function checkboxes() {
+        const triggerBottom = window.innerHeight / 5*4;
+        boxes.forEach(box => {
+            const boxTop = box.getBoundingClientRect().top;
+            if(boxTop > triggerBottom) {
+                box.classList.add("show-animate");
+            }else {
+                box.classList.remove("show-animate");
+            }
+        })
+    }
+</script> -->
+
+
+<script>
+    const observer = new IntersectionObserver((en) => {
+        en.forEach((entry) => {
+            console.log(entry);
+            if(entry.isIntersecting) {
+                entry.target.classList.add("show-animate");
+            } else {
+                entry.target.classList.remove("show-animate");
+            }
+        })
+    })
+
+    const hidElements = document.querySelectorAll('section');
+    hidElements.forEach((el) => observer.observe(el));
+</script>
+
+</body>
+
+</html>

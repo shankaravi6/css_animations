@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beofeafer</title>
+</head>
+<style>
+    .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .check {
+        font-size: 40px;
+        cursor: pointer;
+        position: relative;
+        transition: all .3s ease;
+    }
+
+    .check::before {
+        content: "";
+        display: block;
+        opacity: 0;
+        border-bottom: 3px solid chocolate;
+        transform: translateX(100%);
+        transition: all .3s ease;
+    }
+
+    .check::after {
+        content: "";
+        display: block;
+        opacity: 0;
+        border-bottom: 3px solid chocolate;
+        transform: translateX(-100%);
+        transition: all .3s ease;
+    }
+
+    .check:hover::after {
+        opacity: 1;
+        transform: translateX(0%);
+        transition: all .3s ease;
+    }
+
+    .check:hover::before {
+        opacity: 1;
+        transform: translateX(0%);
+        transition: all .3s ease;
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 0px;
+    }
+
+    .timeline .list {
+        width: 2px;
+        height: 60px;
+        background-color: black;
+        position: relative;
+    }
+
+    .list::after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+    }
+</style>
+
+<body>
+    <div class="flex">
+        <p class="check">Text</p>
+    </div>
+
+    <div class="timeline">
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+    </div>
+</body>
+
+</html>

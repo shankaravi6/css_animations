@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+    <style>
+      .txt {
+        font-size: 40px;
+        animation: fade 3s infinite;
+      }
+      /* .txt:hover {
+        animation: fade;
+        animation-duration: 3s;
+      } */
+      @keyframes fade {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .parent {
+        width: 300px;
+        height: 300px;
+        background-color: darkcyan;
+      }
+
+      .child {
+        width: 50%;
+        height: 50%;
+        background-color: cyan;
+        /* transition: 1s linear; */
+        /* transition: 1s cubic-bezier(0.65, 0.05, 0.04, 1.41) 3s; */
+        /* transition: transform 1s ease-in; */
+        animation: l-t-r 1s ease-in forwards infinite alternate;
+      }
+
+      .parent:hover .child {
+        /* transform: translateX(100%); */
+        /* animation: l-t-r 1s ease-in forwards 3 alternate 3s; */
+        animation-play-state: paused;
+      }
+
+      @keyframes l-t-r {
+        0% {
+          background-color: red;
+          transform: translateX(0);
+        }
+        33% {
+          transform: translateY(100%);
+        }
+        50% {
+          background-color: blue;
+        }
+        66% {
+          transform: translateX(100%) translateY(100%);
+        }
+        100% {
+          background-color: green;
+          transform: translateX(100%);
+        }
+      }
+
+      .text {
+        background-color: burlywood;
+        padding: 5px 20px;
+        width: max-content;
+        height: max-content;
+        text-transform: uppercase;
+        animation: border 0.5s ease-in forwards;
+        margin-top: 20px;
+      }
+
+      .text h1 {
+        opacity: 0;
+        animation: reveal .5s linear forwards;
+        transform: translateY(-100%) scale(0.1);
+      }
+
+      @keyframes border {
+        0% {
+          border-radius: 0px;
+        }
+        50% {
+          border-radius: 10px;
+        }
+        100% {
+          border-radius: 20px;
+        }
+      }
+
+      @keyframes reveal {
+        0% {
+          opacity: 0;
+          transform: translateY(-80%) scale(0.5);
+
+        }
+        50% {
+          opacity: 0.5;
+          transform: translateY(-40%) scale(0.75);
+
+        }
+        75% {
+          opacity: 0.75;
+          transform: translateY(-20%) scale(0.85);
+
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0%) scale(1);
+
+        }
+      }
+
+
+      .reveal-box {
+        position: relative;
+      }
+
+      .open-slider {
+        position: absolute;
+        left: 0;
+        height: 800px;
+        animation: reveal-new 2s forwards;
+      }
+
+      @keyframes reveal-new {
+        0%{
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="txt">Animated Text</div>
+    <br />
+
+    <div class="parent">
+      <div class="child"></div>
+    </div>
+
+    <div class="text">
+      <h1>This is nothing</h1>
+    </div>
+
+
+    <div class="reveal-box">
+      <img class="open-slider" src="./Images/a.jpg" >
+    </div>
+  </body>
+</html>

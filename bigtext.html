@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Text</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: black;
+    }
+    .flex {
+        display: flex;
+        flex-direction: row;
+        gap:20px;
+        padding: 0px 100px;
+        width: 100%;
+    }
+    .big {
+        font-size: 180px;
+        font-weight: 600;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #f2f2f262;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: unset;
+    }
+    .one{
+        width: 50%;
+    }
+    .two{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items:center ;
+    }
+    .card {
+        width: 600px;
+        height: 500px;
+        box-shadow: 0px 3px 8px #f7bd7b;
+        position: relative;
+        padding:50px 50px;
+        background-color: #fdb35e;
+        margin-top:-70px;
+    }
+    .card img{
+        position: absolute;
+        left: -50px;
+    }
+    .gradient {
+        background-image: linear-gradient(to bottom, #eaaa48, #b78037, #855a27, #563717, #2a1700) !important;
+        color: transparent;
+        background-clip: text;
+    }
+</style>
+<body>
+   <div class="flex">
+        <div class="one">
+            <p class="big"><span class="gradient">Lorem</span> ipsum sit</p>
+        </div>
+        <div class="two">
+            <div class="card">
+                <img src="https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074075.jpg?size=626&ext=jpg&ga=GA1.1.87170709.1707782400&semt=sph" width="95%" height="100%" />
+            </div>
+        </div>
+   </div> 
+</body>
+</html>
